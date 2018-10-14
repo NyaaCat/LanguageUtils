@@ -26,7 +26,7 @@ jobs:
         ./gradlew publish;
         pushd ..;
         git clone -b maven-repo $MAVEN_REPO_URL langutils-mvn;
-        cp -r langutils/build/repo/cat langutils-mvn/;
+        cp -r LanguageUtils/build/repo/cat langutils-mvn/;
         cd langutils-mvn;
         git config credential.helper "store --file=.git/credentials";
         echo "https://$GITHUB_OAUTH_TOKEN:@github.com" > .git/credentials;
