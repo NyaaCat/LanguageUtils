@@ -17,7 +17,6 @@ jobs:
     - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit 0; fi
     - if [ "$TRAVIS_BRANCH" != "$MC_VERSION" ]; then exit 0; fi
     - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then exit 0; fi
-    - ./gradlew shadowJar
     - cp build/libs/LangUtils.jar ./LangUtils-v$VERSION_STRING.jar
     - export GIT_TAG=v$VERSION_STRING
     - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"

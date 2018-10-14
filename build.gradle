@@ -12,8 +12,6 @@ ext.majorVersion = 2
 ext.minorVersion = 1
 ext.minecraftVersion = "1.13.1"
 
-final def BUKKIT_VERSION = '1.13.1-R0.1-SNAPSHOT'
-
 sourceCompatibility = '1.8'
 
 compileJava {
@@ -46,7 +44,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             artifactId 'LangUtils'
-
+            version "$majorVersion.$minorVersion-SNAPSHOT"
             from components.java
             artifact sourcesJar
             artifact javadocJar
@@ -73,14 +71,9 @@ repositories {
     }
 }
 
-//noinspection GroovyAssignabilityCheck
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.10'
-    testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.2'
-    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.2'
-
     //Bukkit API and libraries
-    compile group: 'org.spigotmc', name: 'spigot-api', version: BUKKIT_VERSION
+    compile "org.spigotmc:spigot-api:$minecraftVersion-R0.1-SNAPSHOT"
 }
 
 javadoc {
