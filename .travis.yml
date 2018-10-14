@@ -56,7 +56,6 @@ jobs:
     - export MC_VERSION=`sed -n 's/^ext\.minecraftVersion = "\(.*\)"$/\1/p' build.gradle`
     - export VERSION_STRING=$MAJOR_VERSION.$MINOR_VERSION-mc$MC_VERSION
     - export FULL_VERSION_STRING=$MAJOR_VERSION.$MINOR_VERSION.$TRAVIS_BUILD_NUMBER-mc$MC_VERSION
-    - 'php update_spigot.php'
     script:
     - |
       if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit 0; fi
