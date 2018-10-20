@@ -46,7 +46,7 @@ jobs:
 
   - stage: javadoc
     language: java
-    jdk: oraclejdk10
+    jdk: openjdk10
     install: true
     before_script:
     - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then exit 0; fi
