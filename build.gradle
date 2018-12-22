@@ -73,7 +73,7 @@ repositories {
 
 dependencies {
     //Bukkit API and libraries
-    compile "org.spigotmc:spigot-api:$minecraftVersion-R0.1-SNAPSHOT"
+    implementation ("org.spigotmc:spigot-api:$minecraftVersion-R0.1-SNAPSHOT")
 }
 
 javadoc {
