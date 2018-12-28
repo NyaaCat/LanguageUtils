@@ -195,14 +195,22 @@ public class LocaleHelper {
 
     public static String toLegacyText(BaseComponent component, String locale) {
         StringBuilder builder = new StringBuilder();
-        toLegacyText(builder, component, locale);
+        if (component instanceof TranslatableComponent) {
+            toLegacyText(builder, (TranslatableComponent) component, locale);
+        } else {
+            toLegacyText(builder, component, locale);
+        }
         return builder.toString();
     }
 
 
     public static String toPlainText(BaseComponent component, String locale) {
         StringBuilder builder = new StringBuilder();
-        toPlainText(builder, component, locale);
+        if (component instanceof TranslatableComponent) {
+            toPlainText(builder, (TranslatableComponent) component, locale);
+        } else {
+            toPlainText(builder, component, locale);
+        }
         return builder.toString();
     }
 }

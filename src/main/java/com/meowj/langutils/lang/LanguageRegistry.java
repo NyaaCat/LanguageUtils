@@ -34,5 +34,4 @@ public class LanguageRegistry {
     public String registerEntry(EnumLang lang, String unlocalizedName, String localizedName) {
         return lang.getMap().put(unlocalizedName, localizedName);
     }
-
 }

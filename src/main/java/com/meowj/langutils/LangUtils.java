@@ -14,7 +14,6 @@ import com.meowj.langutils.lang.convert.EnumLang;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,8 +39,9 @@ public class LangUtils extends JavaPlugin {
         }
 
         config.addDefault("FallbackLanguage", "en_us");
-        List<String> defaultLang = new ArrayList<String>();
+        List<String> defaultLang = new ArrayList<>();
         defaultLang.add("en_us");
+        defaultLang.add("zh_cn");
         config.addDefault("LoadLanguage", defaultLang);
         config.options().copyDefaults(true);
         saveConfig();

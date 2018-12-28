@@ -179,7 +179,7 @@ public enum EnumLang {
     public static void init() {
         for (EnumLang enumLang : EnumLang.values()) {
             if (!LangUtils.plugin.config.getStringList("LoadLanguage").contains("all") && !LangUtils.plugin.config.getStringList("LoadLanguage").contains(enumLang.getLocale())) {
-                LangUtils.plugin.info("Skipped " + enumLang.getLocale());
+                LangUtils.plugin.getLogger().fine("Skipped " + enumLang.getLocale());
                 continue;
             }
             try {
