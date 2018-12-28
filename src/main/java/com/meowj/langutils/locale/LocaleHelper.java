@@ -10,6 +10,7 @@
 
 package com.meowj.langutils.locale;
 
+import com.meowj.langutils.lang.LanguageHelper;
 import com.meowj.langutils.lang.convert.EnumLang;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -83,7 +84,7 @@ public class LocaleHelper {
      * POSSIBILITY OF SUCH DAMAGE.
      */
     public static void toLegacyText(StringBuilder builder, TranslatableComponent translatable, String locale) {
-        String trans = EnumLang.get(locale).getMap().get(translatable.getTranslate());
+        String trans = LanguageHelper.translateToLocal(translatable.getTranslate(), locale);
 
         Matcher matcher = translatable.getFormat().matcher(trans);
         int position = 0;
@@ -121,8 +122,9 @@ public class LocaleHelper {
             for (BaseComponent e : baseComponent.getExtra()) {
                 if (e instanceof TranslatableComponent) {
                     toLegacyText(builder, (TranslatableComponent) e, locale);
+                } else {
+                    builder.append(e.toLegacyText());
                 }
-                builder.append(e.toLegacyText());
             }
         }
     }
@@ -151,7 +153,7 @@ public class LocaleHelper {
     }
 
     public static void toPlainText(StringBuilder builder, TranslatableComponent translatable, String locale) {
-        String trans = EnumLang.get(locale).getMap().get(translatable.getTranslate());
+        String trans = LanguageHelper.translateToLocal(translatable.getTranslate(), locale);
 
         Matcher matcher = translatable.getFormat().matcher(trans);
         int position = 0;
@@ -187,8 +189,9 @@ public class LocaleHelper {
             for (BaseComponent e : baseComponent.getExtra()) {
                 if (e instanceof TranslatableComponent) {
                     toPlainText(builder, (TranslatableComponent) e, locale);
+                } else {
+                    builder.append(e.toPlainText());
                 }
-                builder.append(e.toPlainText());
             }
         }
     }
