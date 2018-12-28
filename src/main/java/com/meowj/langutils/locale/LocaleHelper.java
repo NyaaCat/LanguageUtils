@@ -10,10 +10,7 @@
 
 package com.meowj.langutils.locale;
 
-import com.meowj.langutils.LangUtils;
 import org.bukkit.entity.Player;
-
-import java.lang.reflect.Field;
 
 /**
  * Created by Meow J on 6/20/2015.
