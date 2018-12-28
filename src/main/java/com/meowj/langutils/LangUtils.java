@@ -39,10 +39,6 @@ public class LangUtils extends JavaPlugin {
             warn("This API is not designed for Cauldron/KCauldron server, but it should work without problems for VANILLA items/entities. Again, you cannot use this API with items/entities in mods.");
         }
 
-        File readme = new File(this.getDataFolder(), "lang/README.txt");
-        if (!readme.exists())
-            saveResource("lang/README.txt", false);
-
         config.addDefault("FallbackLanguage", "en_us");
         List<String> defaultLang = new ArrayList<String>();
         defaultLang.add("en_us");

@@ -17,10 +17,7 @@ import com.meowj.langutils.LangUtils;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by Meow J on 6/20/2015.
@@ -38,6 +35,7 @@ public enum EnumLang {
     BE_BY("be_by", new HashMap<>()),
     BG_BG("bg_bg", new HashMap<>()),
     BR_FR("br_fr", new HashMap<>()),
+    BRB("brb", new HashMap<>()),
     BS_BA("bs_ba", new HashMap<>()),
     CA_ES("ca_es", new HashMap<>()),
     CS_CZ("cs_cz", new HashMap<>()),
@@ -47,8 +45,6 @@ public enum EnumLang {
     DE_CH("de_ch", new HashMap<>()),
     DE_DE("de_de", new HashMap<>()),
     EL_GR("el_gr", new HashMap<>()),
-    ENP("enp", new HashMap<>()),
-    ENWS("enws", new HashMap<>()),
     EN_AU("en_au", new HashMap<>()),
     EN_CA("en_ca", new HashMap<>()),
     EN_GB("en_gb", new HashMap<>()),
@@ -56,6 +52,8 @@ public enum EnumLang {
     EN_PT("en_pt", new HashMap<>()),
     EN_UD("en_ud", new HashMap<>()),
     EN_US("en_us", new HashMap<>()),
+    ENP("enp", new HashMap<>()),
+    ENWS("enws", new HashMap<>()),
     EO_UY("eo_uy", new HashMap<>()),
     ES_AR("es_ar", new HashMap<>()),
     ES_CL("es_cl", new HashMap<>()),
@@ -66,11 +64,12 @@ public enum EnumLang {
     ET_EE("et_ee", new HashMap<>()),
     EU_ES("eu_es", new HashMap<>()),
     FA_IR("fa_ir", new HashMap<>()),
-    FIL_PH("fil_ph", new HashMap<>()),
     FI_FI("fi_fi", new HashMap<>()),
+    FIL_PH("fil_ph", new HashMap<>()),
     FO_FO("fo_fo", new HashMap<>()),
     FR_CA("fr_ca", new HashMap<>()),
     FR_FR("fr_fr", new HashMap<>()),
+    FRA_DE("fra_de", new HashMap<>()),
     FY_NL("fy_nl", new HashMap<>()),
     GA_IE("ga_ie", new HashMap<>()),
     GD_GB("gd_gb", new HashMap<>()),
@@ -89,8 +88,8 @@ public enum EnumLang {
     IT_IT("it_it", new HashMap<>()),
     JA_JP("ja_jp", new HashMap<>()),
     JBO_EN("jbo_en", new HashMap<>()),
-    KAB_KAB("kab_kab", new HashMap<>()),
     KA_GE("ka_ge", new HashMap<>()),
+    KAB_KAB("kab_kab", new HashMap<>()),
     KN_IN("kn_in", new HashMap<>()),
     KO_KR("ko_kr", new HashMap<>()),
     KSH("ksh", new HashMap<>()),
@@ -104,6 +103,7 @@ public enum EnumLang {
     MI_NZ("mi_nz", new HashMap<>()),
     MK_MK("mk_mk", new HashMap<>()),
     MN_MN("mn_mn", new HashMap<>()),
+    MOH_CA("moh_ca", new HashMap<>()),
     MS_MY("ms_my", new HashMap<>()),
     MT_MT("mt_mt", new HashMap<>()),
     NDS_DE("nds_de", new HashMap<>()),
@@ -111,6 +111,7 @@ public enum EnumLang {
     NL_NL("nl_nl", new HashMap<>()),
     NN_NO("nn_no", new HashMap<>()),
     NO_NO("no_no", new HashMap<>()),
+    NUK("nuk", new HashMap<>()),
     OC_FR("oc_fr", new HashMap<>()),
     OJ_CA("oj_ca", new HashMap<>()),
     OVD("ovd", new HashMap<>()),
@@ -134,6 +135,7 @@ public enum EnumLang {
     TH_TH("th_th", new HashMap<>()),
     TLH_AA("tlh_aa", new HashMap<>()),
     TR_TR("tr_tr", new HashMap<>()),
+    TT_RU("tt_ru", new HashMap<>()),
     TZL_TZL("tzl_tzl", new HashMap<>()),
     UK_UA("uk_ua", new HashMap<>()),
     VAL_ES("val_es", new HashMap<>()),
@@ -167,7 +169,7 @@ public enum EnumLang {
      * @return The index of a lang file based on locale.
      */
     public static EnumLang get(String locale) {
-        EnumLang result = lookup.get(locale);
+        EnumLang result = lookup.get(locale.toLowerCase(Locale.ENGLISH));
         return result == null ? EN_US : result;
     }
 
