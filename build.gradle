@@ -10,7 +10,7 @@ archivesBaseName = 'LangUtils'
 // Note the spaces before and after the equals sign
 ext.majorVersion = 2
 ext.minorVersion = 1
-ext.minecraftVersion = "1.13.1"
+ext.minecraftVersion = "1.14"
 
 sourceCompatibility = '1.8'
 
