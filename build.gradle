@@ -1,48 +1,62 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
+apply plugin: "java-library"
+apply plugin: "maven-publish"
 
-group = 'cat.nyaa'
-archivesBaseName = 'LangUtils'
-
-// Version strings used for CI
-// Note the spaces before and after the equals sign
 ext.majorVersion = 2
-ext.minorVersion = 1
+ext.minorVersion = 2
 ext.minecraftVersion = "1.14"
 
-sourceCompatibility = '1.8'
+// Suppiled by Jenkins
+ext.buildNumber = System.env.BUILD_NUMBER == null ? "x"                : "$System.env.BUILD_NUMBER"
+ext.mavenDirectory = System.env.MAVEN_DIR == null ? "$projectDir/repo" : "$System.env.MAVEN_DIR"
 
+group = "com.meowj"
+archivesBaseName = "LangUtils-mc$minecraftVersion"
+version = "$majorVersion.$minorVersion.$buildNumber"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// extra compile warnings
 compileJava {
-    options.compilerArgs += ["-Xlint:deprecation", "-Xlint:unchecked"]
+    options.compilerArgs += ["-Xlint:deprecation,unchecked,rawtypes"]
     options.encoding = 'UTF-8'
+}
+
+// default repositories
+repositories {
+    jcenter()
+    maven { name 'Spigot';      url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { name 'Sonatype';    url 'https://oss.sonatype.org/content/groups/public' }
+}
+
+// default dependencies
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:$minecraftVersion-R0.1-SNAPSHOT"
+}
+
+// Source code JAR
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+// Javadoc JAR
+task javadocJar(type: Jar) {
+    dependsOn javadoc
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 //noinspection GroovyAssignabilityCheck
 processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'plugin.yml'
-    }
-    from(sourceSets.main.resources.srcDirs) {
-        include 'plugin.yml'
+    filesMatching("**/plugin.yml") {
         expand 'version': project.version
     }
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
 publishing {
     publications {
-        maven(MavenPublication) {
+        defaultPublication(MavenPublication) {
             artifactId 'LangUtils'
             version "$majorVersion.$minorVersion-SNAPSHOT"
             from components.java
@@ -52,30 +66,12 @@ publishing {
     }
     repositories {
         maven {
-            url "$buildDir/repo"
+            url "$mavenDirectory"
         }
     }
 }
 
-build.dependsOn sourcesJar, javadocJar
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-
-    maven {
-        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
-    }
-    maven {
-        url 'https://oss.sonatype.org/content/groups/public/'
-    }
-}
-
-dependencies {
-    //Bukkit API and libraries
-    compileOnly "org.spigotmc:spigot-api:$minecraftVersion-R0.1-SNAPSHOT"
-}
-
+// options for generating Javadoc
 javadoc {
     (options as StandardJavadocDocletOptions).with {
         links 'https://docs.oracle.com/javase/8/docs/api/'

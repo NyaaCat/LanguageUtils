@@ -1,4 +1,5 @@
 name: LangUtils
-version: 2.1
+# version supplied by gradle script
+version: ${version}
 main: com.meowj.langutils.LangUtils
 api-version: 1.13
