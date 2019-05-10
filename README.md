@@ -1,17 +1,19 @@
 Language Utils
 ==============
 
-[![Gitter](https://badges.gitter.im/MascusJeoraly/LanguageUtils.svg)](https://gitter.im/MascusJeoraly/LanguageUtils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master/build_image)](https://snap-ci.com/MascusJeoraly/LanguageUtils/branch/master)
-
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels.
 
 The major version of this API supports 1.12. If you are using 1.7.10, 1.8.9, 1.9.4, 1.10.2, or 1.11.2, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or `1.4.0` for 1.8.9(no suffix), `1.5.x` for 1.9.4, or `1.6.x` for 1.10.2, `1.8.x` for 1.11.2 accordingly.
+
+Version `2.1.x` are for 1.13 and `2.2.x` are for 1.14.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait, and you can even disable the loading of any language.
 
 Also, if you want to know how to add customized language entries, just read the `README.txt` inside `lang/` folder.
 
-You can get the latest build [here](https://drone.io/github.com/MeowInnovation/LanguageUtils/files "here").
+You can get the latest build [here](https://ci.nyaacat.com/job/LanguageUtils/).
+You can find old builds from the [original author's Release Page](https://github.com/MascusJeoraly/LanguageUtils/releases)
+or [our release page](https://github.com/NyaaCat/LanguageUtils/releases).
 
 You CAN install this plugin on Cauldron/KCauldron servers if you are using 1.2.0.1-1.7.10+ version of this plugin. Again, the API only supports **vanilla** language entries. It will just return the auto-generated material name of an item in mods.
 
@@ -56,17 +58,17 @@ Just add this library to your build path.
 
 ### Maven/Gradle dependency
 
-This plugin is hosting on [Github](https://github.com/MascusJeoraly/LanguageUtils/tree/mvn-repo "Github") cause I don't have a server.
+This plugin is currently hosted on NyaaCommunity's [CI server](https://ci.nyaacat.com/maven/com/meowj/LangUtils/).
 
 If you are using Gradle, add the following to you `build.gradle`:
 
 	repositories {
 	    maven {
-	        url 'https://raw.github.com/MascusJeoraly/LanguageUtils/mvn-repo/'
+	        url 'https://ci.nyaacat.com/maven/'
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '1.9' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '2.2-SNAPSHOT' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -74,16 +76,16 @@ If you are using Maven, add the following to your `pom.xml`:
 	<repositories>
 	  <repository>
 	    <id>lang-utils-repo</id>
-	    <url>https://raw.github.com/MascusJeoraly/LanguageUtils/mvn-repo/</url>
+	    <url>https://ci.nyaacat.com/maven/</url>
 	  </repository>
 	</repository>
-	
+
 	<dependencies>
 	  <dependency>
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>1.9</version>
+	    <version>2.2-SNAPSHOT</version>
 	  </dependency>
 	</dependencies>
 
