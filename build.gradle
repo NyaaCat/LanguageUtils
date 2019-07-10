@@ -8,6 +8,7 @@ ext.minecraftVersion = "1.14"
 // Suppiled by Jenkins
 ext.buildNumber = System.env.BUILD_NUMBER == null ? "x"                : "$System.env.BUILD_NUMBER"
 ext.mavenDirectory = System.env.MAVEN_DIR == null ? "$projectDir/repo" : "$System.env.MAVEN_DIR"
+ext.jdDirectory = System.env.JAVADOCS_DIR == null ? null               : "$System.env.JAVADOCS_DIR"
 
 group = "com.meowj"
 archivesBaseName = "LangUtils-mc$minecraftVersion"
@@ -32,6 +33,11 @@ repositories {
 // default dependencies
 dependencies {
     compileOnly "org.spigotmc:spigot-api:$minecraftVersion-R0.1-SNAPSHOT"
+}
+
+// write javadocs to an external folder which can be served via nginx
+if (ext.jdDirectory != null) {
+    javadoc.destinationDir = file("${jdDirectory}/languageutils-${version}")
 }
 
 // Source code JAR
