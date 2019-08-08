@@ -14,6 +14,7 @@ import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
 import org.bukkit.Material;
+import org.bukkit.block.Biome;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -93,6 +94,39 @@ public class LanguageHelper {
     public static String getItemUnlocalizedName(ItemStack item) {
         EnumItem enumItem = EnumItem.get(item.getType());
         return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
+    }
+
+    /**
+     * Return the unlocalized name of the biome(Minecraft convention)
+     *
+     * @param biome The biome
+     * @return The unlocalized name. If the biome doesn't have a unlocalized name, this method will return the Biome of it.
+     */
+    public static String getBiomeUnlocalizedName(Biome biome) {
+        EnumBiome enumBiome = EnumBiome.get(biome);
+        return enumBiome != null ? enumBiome.getUnlocalizedName() : biome.toString();
+    }
+
+    /**
+     * Return the localized name of the biome.
+     *
+     * @param biome The biome
+     * @param locale The language of the biome
+     * @return The localized name. if the biome doesn't have a localized name, this method will return the unlocalized name of it.
+     */
+    public static String getBiomeName(Biome biome, String locale) {
+        return translateToLocal(getBiomeUnlocalizedName(biome), locale);
+    }
+
+    /**
+     * Return the localized name of the biome.
+     *
+     * @param biome The biome
+     * @param player The receiver of the biome
+     * @return The localized name. if the biome doesn't have a localized name, this method will return the unlocalized name of it.
+     */
+    public static String getBiomeName(Biome biome, Player player) {
+        return getBiomeName(biome, LocaleHelper.getPlayerLanguage(player));
     }
 
     /**

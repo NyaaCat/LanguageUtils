@@ -11,7 +11,6 @@
 package com.meowj.langutils.locale;
 
 import com.meowj.langutils.lang.LanguageHelper;
-import com.meowj.langutils.lang.convert.EnumLang;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TranslatableComponent;
