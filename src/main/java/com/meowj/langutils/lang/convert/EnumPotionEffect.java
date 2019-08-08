@@ -18,7 +18,6 @@ import org.bukkit.potion.PotionType;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
