@@ -54,6 +54,7 @@ public enum EnumEntity {
     SKELETON_HORSE(EntityType.SKELETON_HORSE, "entity.minecraft.skeleton_horse"),
     ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE, "entity.minecraft.zombie_horse"),
     ARMOR_STAND(EntityType.ARMOR_STAND, "entity.minecraft.armor_stand"),
+    DONKEY(EntityType.DONKEY, "entity.minecraft.donkey"),
     MULE(EntityType.MULE, "entity.minecraft.mule"),
     EVOKER_FANGS(EntityType.EVOKER_FANGS, "entity.minecraft.evoker_fangs"),
     EVOKER(EntityType.EVOKER, "entity.minecraft.evoker"),
