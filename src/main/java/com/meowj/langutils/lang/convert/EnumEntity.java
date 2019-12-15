@@ -123,6 +123,7 @@ public enum EnumEntity {
     TRADER_LLAMA(EntityType.TRADER_LLAMA, "entity.minecraft.trader_llama"),
     WANDERING_TRADER(EntityType.WANDERING_TRADER, "entity.minecraft.wandering_trader"),
     FOX(EntityType.FOX, "entity.minecraft.fox"),
+    BEE(EntityType.BEE, "entity.minecraft.bee"),
     FISHING_HOOK(EntityType.FISHING_HOOK, "entity.minecraft.fishing_bobber"),
     LIGHTNING(EntityType.LIGHTNING, "entity.minecraft.lightning_bolt"),
     PLAYER(EntityType.PLAYER, "entity.minecraft.player"),

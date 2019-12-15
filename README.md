@@ -5,7 +5,7 @@ A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, e
 
 The major version of this API supports 1.12. If you are using 1.7.10, 1.8.9, 1.9.4, 1.10.2, or 1.11.2, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or `1.4.0` for 1.8.9(no suffix), `1.5.x` for 1.9.4, or `1.6.x` for 1.10.2, `1.8.x` for 1.11.2 accordingly.
 
-Version `2.1.x` are for 1.13 and `2.2.x` are for 1.14.
+Version `2.1.x` are for 1.13, `2.2.x` are for 1.14 and `2.3.x` are for 1.15.
 
 Loading language files may cost 100-300 ms, but it should be fine to wait, and you can even disable the loading of any language.
 
