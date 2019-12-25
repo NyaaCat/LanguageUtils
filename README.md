@@ -1,6 +1,8 @@
 Language Utils
 ==============
 
+[![Build Status](https://ci.nyaacat.com/job/LanguageUtils/badge/icon)](https://ci.nyaacat.com/job/LanguageUtils/)
+
 A Bukkit/Spigot API offering the ability to get the name of **vanilla** items, entities, enchantments, and enchantment levels.
 
 The major version of this API supports 1.12. If you are using 1.7.10, 1.8.9, 1.9.4, 1.10.2, or 1.11.2, please download `1.4.0` version for 1.7.10(with suffix `-1.7.10`) or `1.4.0` for 1.8.9(no suffix), `1.5.x` for 1.9.4, or `1.6.x` for 1.10.2, `1.8.x` for 1.11.2 accordingly.
@@ -68,7 +70,7 @@ If you are using Gradle, add the following to you `build.gradle`:
 	    }
 	}
 	dependencies {
-		compile group: 'com.meowj', name: 'LangUtils', version: '2.2-SNAPSHOT' // Please check the latest version
+		compile group: 'com.meowj', name: 'LangUtils', version: '2.3-SNAPSHOT' // Please check the latest version
 	}
 
 If you are using Maven, add the following to your `pom.xml`:
@@ -85,7 +87,7 @@ If you are using Maven, add the following to your `pom.xml`:
 	    <groupId>com.meowj</groupId>
 	    <artifactId>LangUtils</artifactId>
 		<!--Please check the latest version -->  
-	    <version>2.2-SNAPSHOT</version>
+	    <version>2.3-SNAPSHOT</version>
 	  </dependency>
 	</dependencies>
 

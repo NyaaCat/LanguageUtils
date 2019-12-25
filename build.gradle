@@ -3,7 +3,7 @@ apply plugin: "maven-publish"
 
 ext.majorVersion = 2
 ext.minorVersion = 3
-ext.minecraftVersion = "1.15"
+ext.minecraftVersion = "1.15.1"
 
 // Suppiled by Jenkins
 ext.buildNumber = System.env.BUILD_NUMBER == null ? "x"                : "$System.env.BUILD_NUMBER"
@@ -89,18 +89,13 @@ javadoc {
         encoding 'UTF-8'
         docEncoding 'UTF-8'
         addBooleanOption('keywords', true)
+        addStringOption('Xdoclint:none', '-quiet')
 
-        def currentJavaVersion = JavaVersion.current()
-        if (currentJavaVersion > JavaVersion.VERSION_1_9) {
+        if (JavaVersion.current() > JavaVersion.VERSION_1_9) {
             options.addBooleanOption('html5', true)
         }
 
         windowTitle = "LangUtils Javadoc"
-        String fullVersion = System.getenv("FULL_VERSION_STRING")
-        if (fullVersion != null){
-            docTitle = "<b>LangUtils</b> " + System.getenv("FULL_VERSION_STRING")
-        } else {
-            docTitle = "<b>LangUtils</b>"
-        }
+        docTitle = "LangUtils (mc$minecraftVersion-${project.version})"
     }
 }
