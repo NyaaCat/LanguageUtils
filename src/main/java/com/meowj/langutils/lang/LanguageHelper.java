@@ -65,12 +65,18 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, String locale) {
         // Potion & SpawnEgg & Player Skull
-        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION || item.getType() == Material.TIPPED_ARROW)
-            return EnumPotionEffect.getLocalizedName(item, locale);
-        else if (item.getType() == Material.PLAYER_HEAD || item.getType() == Material.PLAYER_WALL_HEAD) // is player's skull
-            return EnumItem.getPlayerSkullName(item, locale);
-
-        return translateToLocal(getItemUnlocalizedName(item), locale);
+        switch (item.getType()) {
+            case POTION:
+            case SPLASH_POTION:
+            case LINGERING_POTION:
+            case TIPPED_ARROW:
+                return EnumPotionEffect.getLocalizedName(item, locale);
+            case PLAYER_HEAD:        // is player's skull
+            case PLAYER_WALL_HEAD:   // is player's skull
+                return EnumItem.getPlayerSkullName(item, locale);
+            default:
+                return translateToLocal(getItemUnlocalizedName(item), locale);
+        }
     }
 
     /**
@@ -82,6 +88,29 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, Player player) {
         return getItemName(item, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the localized name of the Material.
+     *
+     * @param material The material
+     * @param player   The receiver of the name
+     * @return The localized name.
+     */
+    public static String getMaterialName(Material material, Player player) {
+        return getMaterialName(material, LocaleHelper.getPlayerLanguage(player));
+    }
+
+    /**
+     * Return the localized name of the Material.
+     * @param material The material
+     * @param locale   The locale
+     * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
+     */
+    public static String getMaterialName(Material material, String locale) {
+        EnumItem enumItem = EnumItem.get(material);
+        String unlocalized = enumItem != null ? enumItem.getUnlocalizedName() : material.toString();
+        return translateToLocal(unlocalized, locale);
     }
 
     /**
