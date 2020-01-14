@@ -49,7 +49,7 @@ public class LocaleHelper {
     }
 
 
-    /**
+    /* Not javadoc
      * Copied from https://github.com/SpigotMC/BungeeCord/blob/master/chat/src/main/java/net/md_5/bungee/api/chat/
      * <p>
      * Copyright (c) 2012, md_5. All rights reserved.
