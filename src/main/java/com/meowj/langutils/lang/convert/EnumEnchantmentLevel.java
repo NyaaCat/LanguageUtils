@@ -68,7 +68,7 @@ public enum EnumEnchantmentLevel {
             case 10:
                 return LEVEL10;
             default:
-                throw new IndexOutOfBoundsException();
+                return null;
         }
     }
 
