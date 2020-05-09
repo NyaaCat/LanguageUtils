@@ -66,12 +66,18 @@ public class LanguageHelper {
      */
     public static String getItemName(ItemStack item, String locale) {
         // Potion & SpawnEgg & Player Skull
-        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION || item.getType() == Material.TIPPED_ARROW)
-            return EnumPotionEffect.getLocalizedName(item, locale);
-        else if (item.getType() == Material.PLAYER_HEAD || item.getType() == Material.PLAYER_WALL_HEAD) // is player's skull
-            return EnumItem.getPlayerSkullName(item, locale);
-
-        return translateToLocal(getItemUnlocalizedName(item), locale);
+        switch (item.getType()) {
+            case POTION:
+            case SPLASH_POTION:
+            case LINGERING_POTION:
+            case TIPPED_ARROW:
+                return EnumPotionEffect.getLocalizedName(item, locale);
+            case PLAYER_HEAD:
+            case PLAYER_WALL_HEAD:
+                return EnumItem.getPlayerSkullName(item, locale);
+            default:
+                return translateToLocal(getItemUnlocalizedName(item), locale);
+        }
     }
 
     /**
@@ -345,7 +351,10 @@ public class LanguageHelper {
         if (result != null)
             return result;
         else {
-            result = EnumLang.get(LangUtils.plugin.config.getString("FallbackLanguage")).getMap().get(unlocalizedName);
+            String fallback = LangUtils.plugin.config.getString("FallbackLanguage");
+            if (fallback != null) {
+                result = EnumLang.get(fallback).getMap().get(unlocalizedName);
+            }
             if (result == null)// when fallback language doesn't exist
                 result = EnumLang.EN_US.getMap().get(unlocalizedName);
         }
