@@ -707,7 +707,7 @@ public enum EnumItem {
     LEATHER(Material.LEATHER, "item.minecraft.leather"),
     MILK_BUCKET(Material.MILK_BUCKET, "item.minecraft.milk_bucket"),
     BRICK(Material.BRICK, "item.minecraft.brick"),
-    CLAY_BALL(Material.CLAY, "item.minecraft.clay_ball"),
+    CLAY_BALL(Material.CLAY_BALL, "item.minecraft.clay_ball"),
     PAPER(Material.PAPER, "item.minecraft.paper"),
     BOOK(Material.BOOK, "item.minecraft.book"),
     SLIMEBALL(Material.SLIME_BALL, "item.minecraft.slime_ball"),
