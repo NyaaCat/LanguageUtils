@@ -480,8 +480,6 @@ public enum EnumItem {
     STRIPPED_CRIMSON_STEM(Material.STRIPPED_CRIMSON_STEM, "block.minecraft.stripped_crimson_stem"),
     CRIMSON_HYPHAE(Material.CRIMSON_HYPHAE, "block.minecraft.crimson_hyphae"),
     STRIPPED_CRIMSON_HYPHAE(Material.STRIPPED_CRIMSON_HYPHAE, "block.minecraft.stripped_crimson_hyphae"),
-
-
     WARPED_FUNGUS(Material.WARPED_FUNGUS, "block.minecraft.warped_fungus"),
     WARPED_NYLIUM(Material.WARPED_NYLIUM, "block.minecraft.warped_nylium"),
     WARPED_PLANKS(Material.WARPED_PLANKS, "block.minecraft.warped_planks"),
