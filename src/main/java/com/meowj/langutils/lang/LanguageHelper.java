@@ -13,8 +13,6 @@ package com.meowj.langutils.lang;
 import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
-import com.sun.scenario.effect.impl.sw.java.JSWInvertMaskPeer;
-import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
