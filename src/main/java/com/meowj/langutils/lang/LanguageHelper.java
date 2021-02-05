@@ -13,6 +13,7 @@ package com.meowj.langutils.lang;
 import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
+import com.sun.scenario.effect.impl.sw.java.JSWInvertMaskPeer;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.enchantments.Enchantment;
@@ -65,12 +66,18 @@ public class LanguageHelper {
      * @return The localized name. if the item doesn't have a localized name, this method will return the unlocalized name of it.
      */
     public static String getItemName(ItemStack item, String locale) {
-        // Potion & SpawnEgg & Player Skull
-        if (item.getType() == Material.POTION || item.getType() == Material.SPLASH_POTION || item.getType() == Material.LINGERING_POTION || item.getType() == Material.TIPPED_ARROW)
-            return EnumPotionEffect.getLocalizedName(item, locale);
-        else if (item.getType() == Material.PLAYER_HEAD || item.getType() == Material.PLAYER_WALL_HEAD) // is player's skull
-            return EnumItem.getPlayerSkullName(item, locale);
-
+        switch (item.getType()) {
+            case POTION:
+            case SPLASH_POTION:
+            case LINGERING_POTION:
+            case TIPPED_ARROW:
+                // Potions
+                return EnumPotionEffect.getLocalizedName(item, locale);
+            case PLAYER_HEAD:
+            case PLAYER_WALL_HEAD:
+                // is player's skull
+                return EnumItem.getPlayerSkullName(item, locale);
+        }
         return translateToLocal(getItemUnlocalizedName(item), locale);
     }
 

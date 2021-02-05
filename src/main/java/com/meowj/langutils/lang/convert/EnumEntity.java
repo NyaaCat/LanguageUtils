@@ -81,6 +81,7 @@ public enum EnumEntity {
     HOGLIN(EntityType.HOGLIN, "entity.minecraft.hoglin"),
     STRIDER(EntityType.STRIDER, "entity.minecraft.strider"),
     ZOGLIN(EntityType.ZOGLIN, "entity.minecraft.zoglin"),
+    PIGLIN_BRUTE(EntityType.PIGLIN_BRUTE, "entity.minecraft.piglin_brute"),
     ENDERMAN(EntityType.ENDERMAN, "entity.minecraft.enderman"),
     CAVE_SPIDER(EntityType.CAVE_SPIDER, "entity.minecraft.cave_spider"),
     SILVERFISH(EntityType.SILVERFISH, "entity.minecraft.silverfish"),

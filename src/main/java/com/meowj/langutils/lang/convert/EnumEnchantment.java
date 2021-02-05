@@ -58,7 +58,11 @@ public enum EnumEnchantment {
     SWEEPING_EDGE(Enchantment.SWEEPING_EDGE, "enchantment.minecraft.sweeping"),
     THORNS(Enchantment.THORNS, "enchantment.minecraft.thorns"),
     VANISHING_CURSE(Enchantment.VANISHING_CURSE, "enchantment.minecraft.vanishing_curse"),
-    WATER_WORKER(Enchantment.WATER_WORKER, "enchantment.minecraft.aqua_affinity");
+    WATER_WORKER(Enchantment.WATER_WORKER, "enchantment.minecraft.aqua_affinity"),
+    MULTISHOT(Enchantment.MULTISHOT, "enchantment.minecraft.multishot"),
+    PIERCING(Enchantment.PIERCING, "enchantment.minecraft.piercing"),
+    QUICK_CHARGE(Enchantment.QUICK_CHARGE, "enchantment.minecraft.quick_charge"),
+    SOUL_SPEED(Enchantment.SOUL_SPEED, "enchantment.minecraft.soul_speed");
 
     private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<>();
 
