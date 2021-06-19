@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             tools {
-                jdk "jdk8"
+                jdk "jdk16"
             }
             steps {
                 sh './gradlew clean build publish'
