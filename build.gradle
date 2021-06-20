@@ -2,20 +2,20 @@ apply plugin: "java-library"
 apply plugin: "maven-publish"
 
 ext.majorVersion = 2
-ext.minorVersion = 4
-ext.minecraftVersion = "1.16.1"
+ext.minorVersion = 5
+ext.minecraftVersion = "1.17"
 
-// Suppiled by Jenkins
+// Supplied by Jenkins
 ext.buildNumber = System.env.BUILD_NUMBER == null ? "x"                : "$System.env.BUILD_NUMBER"
 ext.mavenDirectory = System.env.MAVEN_DIR == null ? "$projectDir/repo" : "$System.env.MAVEN_DIR"
 ext.jdDirectory = System.env.JAVADOCS_DIR == null ? null               : "$System.env.JAVADOCS_DIR"
 
 group = "com.meowj"
 archivesBaseName = "LangUtils-mc$minecraftVersion"
-version = "$majorVersion.$minorVersion.$buildNumber"
+version = "$majorVersion.$minorVersion.$buildNumber".toString()
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 16
+targetCompatibility = 16
 
 // extra compile warnings
 compileJava {
@@ -25,7 +25,7 @@ compileJava {
 
 // default repositories
 repositories {
-    jcenter()
+    mavenCentral()
     maven { name 'Spigot';      url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { name 'Sonatype';    url 'https://oss.sonatype.org/content/groups/public' }
 }
@@ -42,14 +42,14 @@ if (ext.jdDirectory != null) {
 
 // Source code JAR
 task sourcesJar(type: Jar) {
-    archiveClassifier = 'sources'
+    archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
 
 // Javadoc JAR
 task javadocJar(type: Jar) {
     dependsOn javadoc
-    archiveClassifier = 'javadoc'
+    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
 
@@ -80,7 +80,7 @@ publishing {
 // options for generating Javadoc
 javadoc {
     (options as StandardJavadocDocletOptions).with {
-        links 'https://docs.oracle.com/javase/8/docs/api/'
+        links 'https://docs.oracle.com/en/java/javase/16/docs/api/'
         links 'https://hub.spigotmc.org/javadocs/spigot/'
         links 'https://google.github.io/guava/releases/21.0/api/docs/'
         links 'https://ci.md-5.net/job/BungeeCord/ws/chat/target/apidocs/'
@@ -91,9 +91,7 @@ javadoc {
         addBooleanOption('keywords', true)
         addStringOption('Xdoclint:none', '-quiet')
 
-        if (JavaVersion.current() > JavaVersion.VERSION_1_9) {
-            options.addBooleanOption('html5', true)
-        }
+        options.addBooleanOption('html5', true)
 
         windowTitle = "LangUtils Javadoc"
         docTitle = "LangUtils (mc$minecraftVersion-${project.version})"

@@ -436,7 +436,7 @@ public enum EnumItem {
     PURPUR_SLAB(Material.PURPUR_SLAB, "block.minecraft.purpur_slab"),
     END_STONE_BRICKS(Material.END_STONE_BRICKS, "block.minecraft.end_stone_bricks"),
     BEETROOTS(Material.BEETROOTS, "block.minecraft.beetroots"),
-    GRASS_PATH(Material.GRASS_PATH, "block.minecraft.grass_path"),
+    DIRT_PATH(Material.DIRT_PATH, "block.minecraft.dirt_path"),
     MAGMA_BLOCK(Material.MAGMA_BLOCK, "block.minecraft.magma_block"),
     NETHER_WART_BLOCK(Material.NETHER_WART_BLOCK, "block.minecraft.nether_wart_block"),
     RED_NETHER_BRICKS(Material.RED_NETHER_BRICKS, "block.minecraft.red_nether_bricks"),
@@ -1122,8 +1122,8 @@ public enum EnumItem {
             lookup.put(item.material, item);
     }
 
-    private Material material;
-    private String unlocalizedName;
+    private final Material material;
+    private final String unlocalizedName;
 
     /**
      * Create an index of an item
