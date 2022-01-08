@@ -958,6 +958,7 @@ public enum EnumItem {
     MUSIC_DISC_11(Material.MUSIC_DISC_11, "item.minecraft.music_disc_11"),
     MUSIC_DISC_WAIT(Material.MUSIC_DISC_WAIT, "item.minecraft.music_disc_wait"),
     MUSIC_DISC_PIGSTEP(Material.MUSIC_DISC_PIGSTEP, "item.minecraft.music_disc_pigstep"),
+    MUSIC_DISC_OTHERSIDE(Material.MUSIC_DISC_OTHERSIDE, "item.minecraft.music_disc_otherside"),
     BONE(Material.BONE, "item.minecraft.bone"),
     INK_SAC(Material.INK_SAC, "item.minecraft.ink_sac"),
     //    ROSE_RED(Material.ROSE_RED, "item.minecraft.rose_red"),
