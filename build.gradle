@@ -6,7 +6,7 @@ ext.minorVersion = 6
 ext.minecraftVersion = "1.18"
 
 // Supplied by Jenkins
-ext.buildNumber = System.env.BUILD_NUMBER == null ? "x"                : "$System.env.BUILD_NUMBER"
+ext.buildNumber = System.env.BUILD_NUMBER == null ? "1"                : "$System.env.BUILD_NUMBER"
 ext.mavenDirectory = System.env.MAVEN_DIR == null ? "$projectDir/repo" : "$System.env.MAVEN_DIR"
 ext.jdDirectory = System.env.JAVADOCS_DIR == null ? null               : "$System.env.JAVADOCS_DIR"
 
