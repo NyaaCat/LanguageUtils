@@ -2,8 +2,8 @@ apply plugin: "java-library"
 apply plugin: "maven-publish"
 
 ext.majorVersion = 2
-ext.minorVersion = 6
-ext.minecraftVersion = "1.18"
+ext.minorVersion = 7
+ext.minecraftVersion = "1.19"
 
 // Supplied by Jenkins
 ext.buildNumber = System.env.BUILD_NUMBER == null ? "1"                : "$System.env.BUILD_NUMBER"
