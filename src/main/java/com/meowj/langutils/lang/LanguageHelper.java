@@ -14,6 +14,7 @@ import com.meowj.langutils.LangUtils;
 import com.meowj.langutils.lang.convert.*;
 import com.meowj.langutils.locale.LocaleHelper;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Biome;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -92,19 +93,18 @@ public class LanguageHelper {
      * @return The unlocalized name. If the item doesn't have a unlocalized name, this method will return the Material of it.
      */
     public static String getItemUnlocalizedName(ItemStack item) {
-        EnumItem enumItem = EnumItem.get(item.getType());
-        return enumItem != null ? enumItem.getUnlocalizedName() : item.getType().toString();
+        return item.getType().isBlock() ? item.getType().getTranslationKey() : item.getTranslationKey();
     }
 
     /**
      * Return the unlocalized name of the biome(Minecraft convention)
      *
      * @param biome The biome
-     * @return The unlocalized name. If the biome doesn't have a unlocalized name, this method will return the Biome of it.
+     * @rex`turn The unlocalized name. If the biome doesn't have a unlocalized name, this method will return the Biome of it.
      */
     public static String getBiomeUnlocalizedName(Biome biome) {
-        EnumBiome enumBiome = EnumBiome.get(biome);
-        return enumBiome != null ? enumBiome.getUnlocalizedName() : biome.toString();
+        NamespacedKey key = biome.getKey();
+        return "biome." + key.getNamespace() + "." + key.getKey();
     }
 
     /**
@@ -136,8 +136,7 @@ public class LanguageHelper {
      * @return The unlocalized name. If the entity doesn't have a unlocalized name, this method will return the EntityType of it.
      */
     public static String getEntityUnlocalizedName(Entity entity) {
-        EnumEntity enumEntity = EnumEntity.get(entity.getType());
-        return enumEntity != null ? enumEntity.getUnlocalizedName() : entity.getType().toString();
+        return entity.getType().getTranslationKey();
     }
 
     /**
@@ -147,8 +146,7 @@ public class LanguageHelper {
      * @return The unlocalized name. If the entity doesn't have a unlocalized name, this method will return the name of the EntityType.
      */
     public static String getEntityUnlocalizedName(EntityType entityType) {
-        EnumEntity enumEntity = EnumEntity.get(entityType);
-        return enumEntity != null ? enumEntity.getUnlocalizedName() : entityType.toString();
+        return entityType == EntityType.UNKNOWN ? entityType.name() : entityType.getTranslationKey();
     }
 
     /**
@@ -259,8 +257,8 @@ public class LanguageHelper {
      * @return The unlocalized name.
      */
     public static String getEnchantmentUnlocalizedName(Enchantment enchantment) {
-        EnumEnchantment enumEnch = EnumEnchantment.get(enchantment);
-        return (enumEnch != null ? enumEnch.getUnlocalizedName() : enchantment.getKey().getKey());
+        NamespacedKey key = enchantment.getKey();
+        return "enchantment." + key.getNamespace() + "." + key.getKey();
     }
 
     /**
