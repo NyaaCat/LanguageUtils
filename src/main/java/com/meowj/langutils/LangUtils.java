@@ -38,9 +38,9 @@ public class LangUtils extends JavaPlugin {
             warn("This API is not designed for Cauldron/KCauldron server, but it should work without problems for VANILLA items/entities. Again, you cannot use this API with items/entities in mods.");
         }
 
-        config.addDefault("FallbackLanguage", "en_us");
+        config.addDefault("FallbackLanguage", "en_gb");
         List<String> defaultLang = new ArrayList<>();
-        defaultLang.add("en_us");
+        defaultLang.add("en_gb");
         defaultLang.add("zh_cn");
         config.addDefault("LoadLanguage", defaultLang);
         config.options().copyDefaults(true);
