@@ -2,97 +2,121 @@ package com.meowj.langutils.lang.convert;
 
 import org.bukkit.block.Biome;
 
-import java.util.EnumMap;
-import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A list of {@link org.bukkit.block.Biome}
+ * Updated for 1.18+ where the biome system was overhauled.
+ */
 public enum EnumBiome {
-	BADLANDS(Biome.BADLANDS, "biome.minecraft.badlands"),
-	BADLANDS_PLATEAU(Biome.BADLANDS_PLATEAU, "biome.minecraft.badlands_plateau"),
-	BAMBOO_JUNGLE(Biome.BAMBOO_JUNGLE, "biome.minecraft.bamboo_jungle"),
-	BAMBOO_JUNGLE_HILLS(Biome.BAMBOO_JUNGLE_HILLS, "biome.minecraft.bamboo_jungle_hills"),
-	BEACH(Biome.BEACH, "biome.minecraft.beach"),
-	BIRCH_FOREST(Biome.BIRCH_FOREST, "biome.minecraft.birch_forest"),
-	BIRCH_FOREST_HILLS(Biome.BIRCH_FOREST_HILLS, "biome.minecraft.birch_forest_hills"),
-	COLD_OCEAN(Biome.COLD_OCEAN, "biome.minecraft.cold_ocean"),
-	DARK_FOREST(Biome.DARK_FOREST, "biome.minecraft.dark_forest"),
-	DARK_FOREST_HILLS(Biome.DARK_FOREST_HILLS, "biome.minecraft.dark_forest_hills"),
-	DEEP_COLD_OCEAN(Biome.DEEP_COLD_OCEAN, "biome.minecraft.deep_cold_ocean"),
-	DEEP_FROZEN_OCEAN(Biome.DEEP_FROZEN_OCEAN, "biome.minecraft.deep_frozen_ocean"),
-	DEEP_LUKEWARM_OCEAN(Biome.DEEP_LUKEWARM_OCEAN, "biome.minecraft.deep_lukewarm_ocean"),
-	DEEP_OCEAN(Biome.DEEP_OCEAN, "biome.minecraft.deep_ocean"),
-	DEEP_WARM_OCEAN(Biome.DEEP_WARM_OCEAN, "biome.minecraft.deep_warm_ocean"),
-	DESERT(Biome.DESERT, "biome.minecraft.desert"),
-	DESERT_HILLS(Biome.DESERT_HILLS, "biome.minecraft.desert_hills"),
-	DESERT_LAKES(Biome.DESERT_LAKES, "biome.minecraft.desert_lakes"),
-	DRIPSTONE_CAVES(Biome.DRIPSTONE_CAVES, "biome.minecraft.dripstone_caves"),
-	END_BARRENS(Biome.END_BARRENS, "biome.minecraft.end_barrens"),
-	END_HIGHLANDS(Biome.END_HIGHLANDS, "biome.minecraft.end_highlands"),
-	END_MIDLANDS(Biome.END_MIDLANDS, "biome.minecraft.end_midlands"),
-	ERODED_BADLANDS(Biome.ERODED_BADLANDS, "biome.minecraft.eroded_badlands"),
-	FLOWER_FOREST(Biome.FLOWER_FOREST, "biome.minecraft.flower_forest"),
-	FOREST(Biome.FOREST, "biome.minecraft.forest"),
-	FROZEN_OCEAN(Biome.FROZEN_OCEAN, "biome.minecraft.frozen_ocean"),
-	FROZEN_RIVER(Biome.FROZEN_RIVER, "biome.minecraft.frozen_river"),
-	GIANT_SPRUCE_TAIGA(Biome.GIANT_SPRUCE_TAIGA, "biome.minecraft.giant_spruce_taiga"),
-	GIANT_SPRUCE_TAIGA_HILLS(Biome.GIANT_SPRUCE_TAIGA_HILLS, "biome.minecraft.giant_spruce_taiga_hills"),
-	GIANT_TREE_TAIGA(Biome.GIANT_TREE_TAIGA, "biome.minecraft.giant_tree_taiga"),
-	GIANT_TREE_TAIGA_HILLS(Biome.GIANT_TREE_TAIGA_HILLS, "biome.minecraft.giant_tree_taiga_hills"),
-	GRAVELLY_MOUNTAINS(Biome.GRAVELLY_MOUNTAINS, "biome.minecraft.gravelly_mountains"),
-	ICE_SPIKES(Biome.ICE_SPIKES, "biome.minecraft.ice_spikes"),
-	JUNGLE(Biome.JUNGLE, "biome.minecraft.jungle"),
-	JUNGLE_EDGE(Biome.JUNGLE_EDGE, "biome.minecraft.jungle_edge"),
-	JUNGLE_HILLS(Biome.JUNGLE_HILLS, "biome.minecraft.jungle_hills"),
-	LUKEWARM_OCEAN(Biome.LUKEWARM_OCEAN, "biome.minecraft.lukewarm_ocean"),
-	LUSH_CAVES(Biome.LUSH_CAVES, "biome.minecraft.lush_caves"),
-	MODIFIED_BADLANDS_PLATEAU(Biome.MODIFIED_BADLANDS_PLATEAU, "biome.minecraft.modified_badlands_plateau"),
-	MODIFIED_GRAVELLY_MOUNTAINS(Biome.MODIFIED_GRAVELLY_MOUNTAINS, "biome.minecraft.modified_gravelly_mountains"),
-	MODIFIED_JUNGLE(Biome.MODIFIED_JUNGLE, "biome.minecraft.modified_jungle"),
-	MODIFIED_JUNGLE_EDGE(Biome.MODIFIED_JUNGLE_EDGE, "biome.minecraft.modified_jungle_edge"),
-	MODIFIED_WOODED_BADLANDS_PLATEAU(Biome.MODIFIED_WOODED_BADLANDS_PLATEAU, "biome.minecraft.modified_wooded_badlands_plateau"),
-	MOUNTAIN_EDGE(Biome.MOUNTAIN_EDGE, "biome.minecraft.mountain_edge"),
-	MOUNTAINS(Biome.MOUNTAINS, "biome.minecraft.mountains"),
-	MUSHROOM_FIELD_SHORE(Biome.MUSHROOM_FIELD_SHORE, "biome.minecraft.mushroom_field_shore"),
-	MUSHROOM_FIELDS(Biome.MUSHROOM_FIELDS, "biome.minecraft.mushroom_fields"),
-	NETHER_WASTES(Biome.NETHER_WASTES, "biome.minecraft.nether_wastes"),
-	SOUL_SAND_VALLEY(Biome.SOUL_SAND_VALLEY, "biome.minecraft.soul_sand_valley"),
-	CRIMSON_FOREST(Biome.CRIMSON_FOREST, "biome.minecraft.crimson_forest"),
-	WARPED_FOREST(Biome.WARPED_FOREST, "biome.minecraft.warped_forest"),
-	BASALT_DELTAS(Biome.BASALT_DELTAS, "biome.minecraft.basalt_deltas"),
-	OCEAN(Biome.OCEAN, "biome.minecraft.ocean"),
-	PLAINS(Biome.PLAINS, "biome.minecraft.plains"),
-	RIVER(Biome.RIVER, "biome.minecraft.river"),
-	SAVANNA(Biome.SAVANNA, "biome.minecraft.savanna"),
-	SAVANNA_PLATEAU(Biome.SAVANNA_PLATEAU, "biome.minecraft.savanna_plateau"),
-	SHATTERED_SAVANNA(Biome.SHATTERED_SAVANNA, "biome.minecraft.shattered_savanna"),
-	SHATTERED_SAVANNA_PLATEAU(Biome.SHATTERED_SAVANNA_PLATEAU, "biome.minecraft.shattered_savanna_plateau"),
-	SMALL_END_ISLANDS(Biome.SMALL_END_ISLANDS, "biome.minecraft.small_end_islands"),
-	SNOWY_BEACH(Biome.SNOWY_BEACH, "biome.minecraft.snowy_beach"),
-	SNOWY_MOUNTAINS(Biome.SNOWY_MOUNTAINS, "biome.minecraft.snowy_mountains"),
-	SNOWY_TAIGA(Biome.SNOWY_TAIGA, "biome.minecraft.snowy_taiga"),
-	SNOWY_TAIGA_HILLS(Biome.SNOWY_TAIGA_HILLS, "biome.minecraft.snowy_taiga_hills"),
-	SNOWY_TAIGA_MOUNTAINS(Biome.SNOWY_TAIGA_MOUNTAINS, "biome.minecraft.snowy_taiga_mountains"),
-	SNOWY_TUNDRA(Biome.SNOWY_TUNDRA, "biome.minecraft.snowy_tundra"),
-	STONE_SHORE(Biome.STONE_SHORE, "biome.minecraft.stone_shore"),
-	SUNFLOWER_PLAINS(Biome.SUNFLOWER_PLAINS, "biome.minecraft.sunflower_plains"),
-	SWAMP(Biome.SWAMP, "biome.minecraft.swamp"),
-	SWAMP_HILLS(Biome.SWAMP_HILLS, "biome.minecraft.swamp_hills"),
-	TAIGA(Biome.TAIGA, "biome.minecraft.taiga"),
-	TAIGA_HILLS(Biome.TAIGA_HILLS, "biome.minecraft.taiga_hills"),
-	TAIGA_MOUNTAINS(Biome.TAIGA_MOUNTAINS, "biome.minecraft.taiga_mountains"),
-	TALL_BIRCH_FOREST(Biome.TALL_BIRCH_FOREST, "biome.minecraft.tall_birch_forest"),
-	TALL_BIRCH_HILLS(Biome.TALL_BIRCH_HILLS, "biome.minecraft.tall_birch_hills"),
-	THE_END(Biome.THE_END, "biome.minecraft.the_end"),
-	THE_VOID(Biome.THE_VOID, "biome.minecraft.the_void"),
-	WARM_OCEAN(Biome.WARM_OCEAN, "biome.minecraft.warm_ocean"),
-	WOODED_BADLANDS_PLATEAU(Biome.WOODED_BADLANDS_PLATEAU, "biome.minecraft.wooded_badlands_plateau"),
-	WOODED_HILLS(Biome.WOODED_HILLS, "biome.minecraft.wooded_hills"),
-	WOODED_MOUNTAINS(Biome.WOODED_MOUNTAINS, "biome.minecraft.wooded_mountains");
+    // Overworld - Ocean biomes
+    OCEAN(Biome.OCEAN, "biome.minecraft.ocean"),
+    DEEP_OCEAN(Biome.DEEP_OCEAN, "biome.minecraft.deep_ocean"),
+    COLD_OCEAN(Biome.COLD_OCEAN, "biome.minecraft.cold_ocean"),
+    DEEP_COLD_OCEAN(Biome.DEEP_COLD_OCEAN, "biome.minecraft.deep_cold_ocean"),
+    FROZEN_OCEAN(Biome.FROZEN_OCEAN, "biome.minecraft.frozen_ocean"),
+    DEEP_FROZEN_OCEAN(Biome.DEEP_FROZEN_OCEAN, "biome.minecraft.deep_frozen_ocean"),
+    LUKEWARM_OCEAN(Biome.LUKEWARM_OCEAN, "biome.minecraft.lukewarm_ocean"),
+    DEEP_LUKEWARM_OCEAN(Biome.DEEP_LUKEWARM_OCEAN, "biome.minecraft.deep_lukewarm_ocean"),
+    WARM_OCEAN(Biome.WARM_OCEAN, "biome.minecraft.warm_ocean"),
 
-    private static final Map<Biome, EnumBiome> lookup = new EnumMap<>(Biome.class);
+    // Overworld - Plains biomes
+    PLAINS(Biome.PLAINS, "biome.minecraft.plains"),
+    SUNFLOWER_PLAINS(Biome.SUNFLOWER_PLAINS, "biome.minecraft.sunflower_plains"),
+    SNOWY_PLAINS(Biome.SNOWY_PLAINS, "biome.minecraft.snowy_plains"),
+    ICE_SPIKES(Biome.ICE_SPIKES, "biome.minecraft.ice_spikes"),
+
+    // Overworld - Desert biome
+    DESERT(Biome.DESERT, "biome.minecraft.desert"),
+
+    // Overworld - Forest biomes
+    FOREST(Biome.FOREST, "biome.minecraft.forest"),
+    FLOWER_FOREST(Biome.FLOWER_FOREST, "biome.minecraft.flower_forest"),
+    BIRCH_FOREST(Biome.BIRCH_FOREST, "biome.minecraft.birch_forest"),
+    OLD_GROWTH_BIRCH_FOREST(Biome.OLD_GROWTH_BIRCH_FOREST, "biome.minecraft.old_growth_birch_forest"),
+    DARK_FOREST(Biome.DARK_FOREST, "biome.minecraft.dark_forest"),
+
+    // Overworld - Taiga biomes
+    TAIGA(Biome.TAIGA, "biome.minecraft.taiga"),
+    OLD_GROWTH_PINE_TAIGA(Biome.OLD_GROWTH_PINE_TAIGA, "biome.minecraft.old_growth_pine_taiga"),
+    OLD_GROWTH_SPRUCE_TAIGA(Biome.OLD_GROWTH_SPRUCE_TAIGA, "biome.minecraft.old_growth_spruce_taiga"),
+    SNOWY_TAIGA(Biome.SNOWY_TAIGA, "biome.minecraft.snowy_taiga"),
+
+    // Overworld - Jungle biomes
+    JUNGLE(Biome.JUNGLE, "biome.minecraft.jungle"),
+    SPARSE_JUNGLE(Biome.SPARSE_JUNGLE, "biome.minecraft.sparse_jungle"),
+    BAMBOO_JUNGLE(Biome.BAMBOO_JUNGLE, "biome.minecraft.bamboo_jungle"),
+
+    // Overworld - Badlands biomes
+    BADLANDS(Biome.BADLANDS, "biome.minecraft.badlands"),
+    ERODED_BADLANDS(Biome.ERODED_BADLANDS, "biome.minecraft.eroded_badlands"),
+    WOODED_BADLANDS(Biome.WOODED_BADLANDS, "biome.minecraft.wooded_badlands"),
+
+    // Overworld - Savanna biomes
+    SAVANNA(Biome.SAVANNA, "biome.minecraft.savanna"),
+    SAVANNA_PLATEAU(Biome.SAVANNA_PLATEAU, "biome.minecraft.savanna_plateau"),
+    WINDSWEPT_SAVANNA(Biome.WINDSWEPT_SAVANNA, "biome.minecraft.windswept_savanna"),
+
+    // Overworld - Mountain biomes
+    MEADOW(Biome.MEADOW, "biome.minecraft.meadow"),
+    GROVE(Biome.GROVE, "biome.minecraft.grove"),
+    SNOWY_SLOPES(Biome.SNOWY_SLOPES, "biome.minecraft.snowy_slopes"),
+    FROZEN_PEAKS(Biome.FROZEN_PEAKS, "biome.minecraft.frozen_peaks"),
+    JAGGED_PEAKS(Biome.JAGGED_PEAKS, "biome.minecraft.jagged_peaks"),
+    STONY_PEAKS(Biome.STONY_PEAKS, "biome.minecraft.stony_peaks"),
+    WINDSWEPT_HILLS(Biome.WINDSWEPT_HILLS, "biome.minecraft.windswept_hills"),
+    WINDSWEPT_GRAVELLY_HILLS(Biome.WINDSWEPT_GRAVELLY_HILLS, "biome.minecraft.windswept_gravelly_hills"),
+    WINDSWEPT_FOREST(Biome.WINDSWEPT_FOREST, "biome.minecraft.windswept_forest"),
+
+    // Overworld - Swamp biomes
+    SWAMP(Biome.SWAMP, "biome.minecraft.swamp"),
+    MANGROVE_SWAMP(Biome.MANGROVE_SWAMP, "biome.minecraft.mangrove_swamp"),
+
+    // Overworld - Beach and shore biomes
+    BEACH(Biome.BEACH, "biome.minecraft.beach"),
+    SNOWY_BEACH(Biome.SNOWY_BEACH, "biome.minecraft.snowy_beach"),
+    STONY_SHORE(Biome.STONY_SHORE, "biome.minecraft.stony_shore"),
+
+    // Overworld - River biomes
+    RIVER(Biome.RIVER, "biome.minecraft.river"),
+    FROZEN_RIVER(Biome.FROZEN_RIVER, "biome.minecraft.frozen_river"),
+
+    // Overworld - Cave biomes
+    DRIPSTONE_CAVES(Biome.DRIPSTONE_CAVES, "biome.minecraft.dripstone_caves"),
+    LUSH_CAVES(Biome.LUSH_CAVES, "biome.minecraft.lush_caves"),
+    DEEP_DARK(Biome.DEEP_DARK, "biome.minecraft.deep_dark"),
+
+    // Overworld - Mushroom biome
+    MUSHROOM_FIELDS(Biome.MUSHROOM_FIELDS, "biome.minecraft.mushroom_fields"),
+
+    // Overworld - Cherry biome (1.20+)
+    CHERRY_GROVE(Biome.CHERRY_GROVE, "biome.minecraft.cherry_grove"),
+
+    // Overworld - Pale Garden biome (1.21.4+)
+    PALE_GARDEN(Biome.PALE_GARDEN, "biome.minecraft.pale_garden"),
+
+    // Nether biomes
+    NETHER_WASTES(Biome.NETHER_WASTES, "biome.minecraft.nether_wastes"),
+    SOUL_SAND_VALLEY(Biome.SOUL_SAND_VALLEY, "biome.minecraft.soul_sand_valley"),
+    CRIMSON_FOREST(Biome.CRIMSON_FOREST, "biome.minecraft.crimson_forest"),
+    WARPED_FOREST(Biome.WARPED_FOREST, "biome.minecraft.warped_forest"),
+    BASALT_DELTAS(Biome.BASALT_DELTAS, "biome.minecraft.basalt_deltas"),
+
+    // End biomes
+    THE_END(Biome.THE_END, "biome.minecraft.the_end"),
+    END_HIGHLANDS(Biome.END_HIGHLANDS, "biome.minecraft.end_highlands"),
+    END_MIDLANDS(Biome.END_MIDLANDS, "biome.minecraft.end_midlands"),
+    END_BARRENS(Biome.END_BARRENS, "biome.minecraft.end_barrens"),
+    SMALL_END_ISLANDS(Biome.SMALL_END_ISLANDS, "biome.minecraft.small_end_islands"),
+
+    // Special biome
+    THE_VOID(Biome.THE_VOID, "biome.minecraft.the_void");
+
+    private static final Map<Biome, EnumBiome> lookup = new HashMap<>();
 
     static {
-        for (EnumBiome biome : EnumSet.allOf(EnumBiome.class))
+        for (EnumBiome biome : values())
             lookup.put(biome.getBiome(), biome);
     }
 

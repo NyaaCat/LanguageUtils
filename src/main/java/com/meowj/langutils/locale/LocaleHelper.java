@@ -18,6 +18,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Meow J on 6/20/2015.
@@ -27,6 +28,12 @@ import java.util.regex.Matcher;
  * @author Meow J
  */
 public class LocaleHelper {
+
+    /**
+     * Pattern for matching translation format specifiers like %s, %1$s, %d, etc.
+     * This was previously obtained from TranslatableComponent.getFormat() but is no longer exposed.
+     */
+    private static final Pattern FORMAT_PATTERN = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
 
     /**
      * Return the language of the player
@@ -85,7 +92,7 @@ public class LocaleHelper {
     public static void toLegacyText(StringBuilder builder, TranslatableComponent translatable, String locale) {
         String trans = LanguageHelper.translateToLocal(translatable.getTranslate(), locale);
 
-        Matcher matcher = translatable.getFormat().matcher(trans);
+        Matcher matcher = FORMAT_PATTERN.matcher(trans);
         int position = 0;
         int i = 0;
         while (matcher.find(position)) {
@@ -154,7 +161,7 @@ public class LocaleHelper {
     public static void toPlainText(StringBuilder builder, TranslatableComponent translatable, String locale) {
         String trans = LanguageHelper.translateToLocal(translatable.getTranslate(), locale);
 
-        Matcher matcher = translatable.getFormat().matcher(trans);
+        Matcher matcher = FORMAT_PATTERN.matcher(trans);
         int position = 0;
         int i = 0;
         while (matcher.find(position)) {

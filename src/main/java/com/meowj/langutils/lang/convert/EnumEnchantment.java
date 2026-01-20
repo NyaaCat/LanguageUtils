@@ -10,6 +10,8 @@
 
 package com.meowj.langutils.lang.convert;
 
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.enchantments.Enchantment;
 
 import java.util.EnumSet;
@@ -20,61 +22,91 @@ import java.util.Map;
  * This file is part of LanguageUtils
  * <p>
  * A list of enchantments.
+ * Updated for 1.21+ where enchantments are accessed via Registry.
  *
  * @author <b>hexosse</b> (<a href="https://github.com/hexosse">hexosse on GitHub</a>).
  */
 public enum EnumEnchantment {
 
-    ARROW_DAMAGE(Enchantment.ARROW_DAMAGE, "enchantment.minecraft.power"),
-    ARROW_FIRE(Enchantment.ARROW_FIRE, "enchantment.minecraft.flame"),
-    ARROW_INFINITE(Enchantment.ARROW_INFINITE, "enchantment.minecraft.infinity"),
-    ARROW_KNOCKBACK(Enchantment.ARROW_KNOCKBACK, "enchantment.minecraft.punch"),
-    BINDING_CURSE(Enchantment.BINDING_CURSE, "enchantment.minecraft.binding_curse"),
-    CHANNELING(Enchantment.CHANNELING, "enchantment.minecraft.channeling"),
-    DAMAGE_ALL(Enchantment.DAMAGE_ALL, "enchantment.minecraft.sharpness"),
-    DAMAGE_ARTHROPODS(Enchantment.DAMAGE_ARTHROPODS, "enchantment.minecraft.bane_of_arthropods"),
-    DAMAGE_UNDEAD(Enchantment.DAMAGE_UNDEAD, "enchantment.minecraft.smite"),
-    DEPTH_STRIDER(Enchantment.DEPTH_STRIDER, "enchantment.minecraft.depth_strider"),
-    DIG_SPEED(Enchantment.DIG_SPEED, "enchantment.minecraft.efficiency"),
-    DURABILITY(Enchantment.DURABILITY, "enchantment.minecraft.unbreaking"),
-    FIRE_ASPECT(Enchantment.FIRE_ASPECT, "enchantment.minecraft.fire_aspect"),
-    FROST_WALKER(Enchantment.FROST_WALKER, "enchantment.minecraft.frost_walker"),
-    IMPALING(Enchantment.IMPALING, "enchantment.minecraft.impaling"),
-    KNOCKBACK(Enchantment.KNOCKBACK, "enchantment.minecraft.knockback"),
-    LOOT_BONUS_BLOCKS(Enchantment.LOOT_BONUS_BLOCKS, "enchantment.minecraft.fortune"),
-    LOOT_BONUS_MOBS(Enchantment.LOOT_BONUS_MOBS, "enchantment.minecraft.looting"),
-    LOYALTY(Enchantment.LOYALTY, "enchantment.minecraft.loyalty"),
-    LUCK(Enchantment.LUCK, "enchantment.minecraft.luck_of_the_sea"),
-    LURE(Enchantment.LURE, "enchantment.minecraft.lure"),
-    MENDING(Enchantment.MENDING, "enchantment.minecraft.mending"),
-    OXYGEN(Enchantment.OXYGEN, "enchantment.minecraft.respiration"),
-    PROTECTION_ENVIRONMENTAL(Enchantment.PROTECTION_ENVIRONMENTAL, "enchantment.minecraft.protection"),
-    PROTECTION_EXPLOSIONS(Enchantment.PROTECTION_EXPLOSIONS, "enchantment.minecraft.blast_protection"),
-    PROTECTION_FALL(Enchantment.PROTECTION_FALL, "enchantment.minecraft.feather_falling"),
-    PROTECTION_FIRE(Enchantment.PROTECTION_FIRE, "enchantment.minecraft.fire_protection"),
-    PROTECTION_PROJECTILE(Enchantment.PROTECTION_PROJECTILE, "enchantment.minecraft.projectile_protection"),
-    RIPTIDE(Enchantment.RIPTIDE, "enchantment.minecraft.riptide"),
-    SILK_TOUCH(Enchantment.SILK_TOUCH, "enchantment.minecraft.silk_touch"),
-    SWEEPING_EDGE(Enchantment.SWEEPING_EDGE, "enchantment.minecraft.sweeping"),
-    THORNS(Enchantment.THORNS, "enchantment.minecraft.thorns"),
-    VANISHING_CURSE(Enchantment.VANISHING_CURSE, "enchantment.minecraft.vanishing_curse"),
-    WATER_WORKER(Enchantment.WATER_WORKER, "enchantment.minecraft.aqua_affinity");
+    // Armor enchantments
+    PROTECTION("protection", "enchantment.minecraft.protection"),
+    FIRE_PROTECTION("fire_protection", "enchantment.minecraft.fire_protection"),
+    FEATHER_FALLING("feather_falling", "enchantment.minecraft.feather_falling"),
+    BLAST_PROTECTION("blast_protection", "enchantment.minecraft.blast_protection"),
+    PROJECTILE_PROTECTION("projectile_protection", "enchantment.minecraft.projectile_protection"),
+    RESPIRATION("respiration", "enchantment.minecraft.respiration"),
+    AQUA_AFFINITY("aqua_affinity", "enchantment.minecraft.aqua_affinity"),
+    THORNS("thorns", "enchantment.minecraft.thorns"),
+    DEPTH_STRIDER("depth_strider", "enchantment.minecraft.depth_strider"),
+    FROST_WALKER("frost_walker", "enchantment.minecraft.frost_walker"),
+    BINDING_CURSE("binding_curse", "enchantment.minecraft.binding_curse"),
+    SOUL_SPEED("soul_speed", "enchantment.minecraft.soul_speed"),
+    SWIFT_SNEAK("swift_sneak", "enchantment.minecraft.swift_sneak"),
+
+    // Weapon enchantments
+    SHARPNESS("sharpness", "enchantment.minecraft.sharpness"),
+    SMITE("smite", "enchantment.minecraft.smite"),
+    BANE_OF_ARTHROPODS("bane_of_arthropods", "enchantment.minecraft.bane_of_arthropods"),
+    KNOCKBACK("knockback", "enchantment.minecraft.knockback"),
+    FIRE_ASPECT("fire_aspect", "enchantment.minecraft.fire_aspect"),
+    LOOTING("looting", "enchantment.minecraft.looting"),
+    SWEEPING_EDGE("sweeping_edge", "enchantment.minecraft.sweeping"),
+
+    // Tool enchantments
+    EFFICIENCY("efficiency", "enchantment.minecraft.efficiency"),
+    SILK_TOUCH("silk_touch", "enchantment.minecraft.silk_touch"),
+    UNBREAKING("unbreaking", "enchantment.minecraft.unbreaking"),
+    FORTUNE("fortune", "enchantment.minecraft.fortune"),
+
+    // Bow enchantments
+    POWER("power", "enchantment.minecraft.power"),
+    PUNCH("punch", "enchantment.minecraft.punch"),
+    FLAME("flame", "enchantment.minecraft.flame"),
+    INFINITY("infinity", "enchantment.minecraft.infinity"),
+
+    // Fishing rod enchantments
+    LUCK_OF_THE_SEA("luck_of_the_sea", "enchantment.minecraft.luck_of_the_sea"),
+    LURE("lure", "enchantment.minecraft.lure"),
+
+    // Trident enchantments
+    LOYALTY("loyalty", "enchantment.minecraft.loyalty"),
+    IMPALING("impaling", "enchantment.minecraft.impaling"),
+    RIPTIDE("riptide", "enchantment.minecraft.riptide"),
+    CHANNELING("channeling", "enchantment.minecraft.channeling"),
+
+    // Crossbow enchantments
+    MULTISHOT("multishot", "enchantment.minecraft.multishot"),
+    QUICK_CHARGE("quick_charge", "enchantment.minecraft.quick_charge"),
+    PIERCING("piercing", "enchantment.minecraft.piercing"),
+
+    // Mace enchantments (1.21+)
+    DENSITY("density", "enchantment.minecraft.density"),
+    BREACH("breach", "enchantment.minecraft.breach"),
+    WIND_BURST("wind_burst", "enchantment.minecraft.wind_burst"),
+
+    // Other enchantments
+    MENDING("mending", "enchantment.minecraft.mending"),
+    VANISHING_CURSE("vanishing_curse", "enchantment.minecraft.vanishing_curse");
 
     private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<>();
 
     static {
-        for (EnumEnchantment enchantment : EnumSet.allOf(EnumEnchantment.class))
-            lookup.put(enchantment.enchantment, enchantment);
+        for (EnumEnchantment enumEnch : EnumSet.allOf(EnumEnchantment.class)) {
+            Enchantment ench = enumEnch.getEnchantment();
+            if (ench != null) {
+                lookup.put(ench, enumEnch);
+            }
+        }
     }
 
-    private Enchantment enchantment;
-    private String unlocalizedName;
+    private final String key;
+    private final String unlocalizedName;
 
     /**
      * Create an index of enchantments.
      */
-    EnumEnchantment(Enchantment enchantment, String unlocalizedName) {
-        this.enchantment = enchantment;
+    EnumEnchantment(String key, String unlocalizedName) {
+        this.key = key;
         this.unlocalizedName = unlocalizedName;
     }
 
@@ -92,7 +124,14 @@ public enum EnumEnchantment {
      * @return The {@link Enchantment} of the enchantment.
      */
     public Enchantment getEnchantment() {
-        return enchantment;
+        return Registry.ENCHANTMENT.get(NamespacedKey.minecraft(key));
+    }
+
+    /**
+     * @return The registry key of the enchantment.
+     */
+    public String getKey() {
+        return key;
     }
 
     /**
